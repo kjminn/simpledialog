@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     String[] items={"젤리빈","킷켓","롤리팝"};
+    boolean[] checkArr={false, true, false};
     Button but;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle("First Dialog");
-        dialog.setItems(items, new DialogInterface.OnClickListener() {
+        /*dialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                but.setText(items[which]);
+            }
+        });*/
+
+        dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 but.setText(items[which]);
             }
         });
+
+
         dialog.setIcon(R.drawable.first_icon);
         dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
